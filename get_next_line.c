@@ -6,7 +6,7 @@
 /*   By: avan-ni <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/05 17:09:08 by avan-ni           #+#    #+#             */
-/*   Updated: 2018/06/15 12:59:18 by avan-ni          ###   ########.fr       */
+/*   Updated: 2018/06/20 12:24:54 by avan-ni          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@ static int	ft_read_line(char *buf, char **l,
 	left[fd] = ft_strjoin(temp, buf);
 	if (ft_delchr(left[fd], '\n') >= 0)
 	{
+		ft_strdel(&temp);
+		temp = left[fd];
 		*l = ft_strnew_del(left[fd], '\n');
-		left[fd] = ft_strnew_delaft(ft_strjoin(temp, buf), '\n');
+		left[fd] = ft_strnew_delaft(temp, '\n');
 		ft_strdel(&temp);
 		ft_strdel(&buf);
 		return (1);
